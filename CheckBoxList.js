@@ -4,6 +4,11 @@ module.exports = class CheckBoxList extends React.Component {
   constructor(props) {
     super(props);
 
+    // If no value is specified, use the label.
+    props.defaultData.forEach(function(item) {
+      item.value = item.value || item.label;
+    });
+
     this.state = {
         data: props.defaultData || []
     };
