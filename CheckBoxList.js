@@ -33,6 +33,20 @@ module.exports = class CheckBoxList extends React.Component {
     }
   }
 
+  // check all items in the list
+  all() {
+    var newData = [];
+    this.state.data.forEach(function(item) {
+      item.checked = true;
+      newData.push(item);
+    });
+
+    this.setState({data: newData}, function() {
+      // notify of change
+      this.handleItemChange({ target: {} });
+    });
+  }
+
   // uncheck all items in the list
   reset() {
     var newData = [];
@@ -41,7 +55,10 @@ module.exports = class CheckBoxList extends React.Component {
       newData.push(item);
     });
 
-    this.setState({data: newData});
+    this.setState({data: newData}, function() {
+      // notify of change
+      this.handleItemChange({ target: {} });
+    });
   }
 
   render() {
