@@ -1,4 +1,3 @@
-'use strict';
 var React = require('react');
 
 module.exports = class CheckBoxList extends React.Component {
