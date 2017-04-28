@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = class CheckBoxList extends React.Component {
+export default class CheckBoxList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -66,28 +66,49 @@ module.exports = class CheckBoxList extends React.Component {
     });
   }
 
+  onSelect(item) {
+    // Toggle selected value of item and unset selected value of all others.
+    var data = this.state.data;
+    data.forEach(function(d) {
+      d.selected = d.value === item.value ? !d.selected : false;
+    });
+
+    this.setState({ data: data });
+
+    // Trigger callback event.
+    if (this.props.onSelect) {
+      this.props.onSelect(item);
+    }
+  }
+
   render() {
     var options;
 
     options = this.state.data.map(function(item, index) {
       return (
-        React.createElement('div', {key: 'chk-' + index, className: 'form-check'}, 
-          React.createElement('label', {className: 'form-check-label'}, 
-            React.createElement('input', {
-              type: 'checkbox', 
-              className: 'form-check-input',
-              value: item.value, 
-              onChange: this.handleItemChange, 
-              checked: item.checked ? true : false}), ' ', item.label
-          )
-        )
+        <div key={'chk-' + index} className={'form-check'}> 
+          <label className='form-check-label'> 
+            <input 
+              type='checkbox'
+              className='form-check-input'
+              value={item.value}
+              onChange={this.handleItemChange}
+              checked={item.checked ? true : false}
+            />
+            <div className={ (item.selected ? 'text-primary' : '') }>
+              {item.label}
+            </div>
+          </label>
+          {
+            this.props.onSelect && 
+            <i className='fa fa-search ml-1' aria-hidden='true' style={ { cursor: 'pointer' } } title='Select' onClick={ () => this.onSelect(item) }></i>
+          }
+        </div>
       );
     }.bind(this));
 
     return (
-      React.createElement('div', null, 
-          options
-      )
+      <div>{ options }</div>
     );
   }
 }
