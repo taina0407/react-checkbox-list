@@ -1,5 +1,5 @@
 # react-checkbox-list
-A Bootstrap v4 react component for a checkbox list
+A Bootstrap 4 react component for a checkbox list.
 
 A simple react component that creates a checkbox list from an array of data. Triggers an event when the user checks/unchecks a value. 
 
@@ -15,8 +15,6 @@ The following features are supported:
 
 ```sh
 npm install react-checkbox-list
-or
-bower install react-checkbox-list
 ```
 
 ## Usage
@@ -27,18 +25,18 @@ To use the control, simply include the tag in your HTML and provide an array of 
 var CheckBoxList = require('react-checkbox-list');
 
 render: function() {
-	// supply initial data
-	var data = [
-		{value: 'apple', label: 'Apple'},
-		{value: 'orange', label: 'Orange'},
-		{value: 'banana', label: 'Banana', checked: true} // check by default
-	];
+  // supply initial data
+  var data = [
+    {value: 'apple', label: 'Apple'},
+    {value: 'orange', label: 'Orange'},
+    {value: 'banana', label: 'Banana', checked: true} // check by default
+  ];
 
-	return(
-		<div>
-			<CheckBoxList ref="chkboxList" defaultData={data} onChange={this.onChange} onSelect={this.onSelect} />
-		</div>
-	);
+  return(
+    <div>
+      <CheckBoxList ref="chkboxList" defaultData={data} onChange={this.onChange} onSelect={this.onSelect} />
+    </div>
+  );
 }
 ```
 
@@ -65,6 +63,7 @@ onSelect: function(item) {
 ## API
 
 `all()` - check all items.
+
 `reset()` - uncheck all items.
 
 ## License
