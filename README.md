@@ -1,7 +1,15 @@
 # react-checkbox-list
-A bootstrap-style react component for checkbox list
+A Bootstrap v4 react component for a checkbox list
 
-This is a simple react component that takes a meta data, translates it into a checkbox list and provides selected values when user changes selection. That's all it does.
+A simple react component that creates a checkbox list from an array of data. Triggers an event when the user checks/unchecks a value. 
+
+## Features
+
+The following features are supported:
+
+- Check a single item.
+- Check/uncheck all items.
+- Select a single item.
 
 ## Install
 
@@ -12,15 +20,12 @@ bower install react-checkbox-list
 ```
 
 ## Usage
-Simply require it to use it:
+
+To use the control, simply include the tag in your HTML and provide an array of data consisting of value/label pairs. *Label is optional.*
 
 ```javascript
 var CheckBoxList = require('react-checkbox-list');
-```
 
-Compose it in render method:
-
-```html
 render: function() {
 	// supply initial data
 	var data = [
@@ -31,29 +36,36 @@ render: function() {
 
 	return(
 		<div>
-			<CheckBoxList ref="chkboxList" defaultData={data} onChange={this.handleCheckboxListChange} />
+			<CheckBoxList ref="chkboxList" defaultData={data} onChange={this.onChange} onSelect={this.onSelect} />
 		</div>
 	);
 }
 ```
 
-Listen for changes and get the selected values:
+### Events
+
+Events are fired when the user checks/unchecks an item and when the user selects an item.
 
 ```javascript
-handleCheckboxListChange: function(values) {
-  // values is array of selected item. e.g. ['apple', 'banana']
+onChange: function(values) {
+  // Values is array of selected item. e.g. ['apple', 'banana']
+  values.forEach(function(value) {
+    console.log(value + ' is checked.');
+  });
 }
 ```
 
-Uncheck all items:
-
 ```javascript
-uncheckAll: function() {
-  this.refs.chkboxList.reset();
+onSelect: function(item) {
+  // item is the selected object. e.g. [{ value: 'apple', label: 'Apple', selected: true }]
+  console.log('You selected ' + item.label);
 }
 ```
 
-That's it for the API!
+## API
+
+`all()` - check all items.
+`reset()` - uncheck all items.
 
 ## License
 
