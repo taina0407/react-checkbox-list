@@ -1,6 +1,8 @@
 # react-checkbox-list
 A Bootstrap 4 react component for a checkbox list.
 
+[Demo](https://plnkr.co/edit/jag6vep1BnDyQIWWQ6vP?p=preview)
+
 A simple react component that creates a checkbox list from an array of data. Triggers an event when the user checks/unchecks a value. 
 
 ## Features
