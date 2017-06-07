@@ -17,7 +17,7 @@ module.exports = class CheckBoxList extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
-  componentWillReceiveProps: function(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({data: nextProps.defaultData});
   }
 
