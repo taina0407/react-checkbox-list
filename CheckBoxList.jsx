@@ -16,6 +16,10 @@ module.exports = React.createClass({
 		};
 	},
 
+	componentWillReceiveProps: function(nextProps) {
+		this.setState({data: nextProps.defaultData});
+	},
+
 	handleItemChange: function(e) {
 		var selectedValues = [],
 			newData = [];
@@ -69,7 +73,8 @@ module.exports = React.createClass({
 							type="checkbox"
 							value={item.value}
 							onChange={this.handleItemChange}
-							checked={item.checked ? true : false} /> {item.label}
+							checked={item.checked ? true : false}
+							{...this.props.inputProps} /> {item.label}
 					</label>
 				</div>
 			);
