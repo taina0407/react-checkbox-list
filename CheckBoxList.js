@@ -82,7 +82,8 @@ module.exports = class CheckBoxList extends React.Component {
               className: 'form-check-input',
               value: item.value, 
               onChange: this.handleItemChange, 
-              checked: item.checked ? true : false}), ' ', item.label
+              checked: item.checked ? true : false,
+              ... this.props.inputProps}), ' ', item.label
           )
         )
       );
