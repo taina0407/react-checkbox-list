@@ -18,8 +18,8 @@ module.exports = class CheckBoxList extends React.Component {
   }
 
   componentWillReceiveProps: function(nextProps) {
-		this.setState({data: nextProps.defaultData});
-	},
+    this.setState({data: nextProps.defaultData});
+  }
 
   handleItemChange(e) {
     var selectedValues = [],
