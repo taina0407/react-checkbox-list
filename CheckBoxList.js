@@ -77,13 +77,12 @@ module.exports = class CheckBoxList extends React.Component {
       return (
         React.createElement('div', {key: 'chk-' + index, className: 'form-check'}, 
           React.createElement('label', {className: 'form-check-label'}, 
-            React.createElement('input', {
+            React.createElement('input', Object.assign({
               type: 'checkbox', 
               className: 'form-check-input',
               value: item.value, 
               onChange: this.handleItemChange, 
-              checked: item.checked ? true : false,
-              ... this.props.inputProps}), ' ', item.label
+              checked: item.checked ? true : false}, this.props.inputProps)), ' ', item.label
           )
         )
       );
