@@ -17,6 +17,10 @@ module.exports = class CheckBoxList extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
+  componentWillReceiveProps: function(nextProps) {
+		this.setState({data: nextProps.defaultData});
+	},
+
   handleItemChange(e) {
     var selectedValues = [],
         newData = [];
